@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f3ec">
+    <title>A Little Perspective | Random Quotes</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #252b24;
+        --muted: #697166;
+        --paper: #f4f3ec;
+        --accent: #b7462f;
+        --line: #d9dbd1;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        background-color: var(--paper);
+        background-image: radial-gradient(#d7d8cf 0.65px, transparent 0.65px);
+        background-size: 16px 16px;
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+      }
+
+      header, footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px clamp(20px, 6vw, 88px);
+        font-family: Arial, sans-serif;
+      }
+
+      header { border-bottom: 1px solid var(--line); }
+      footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+
+      .brand {
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .edition { color: var(--muted); font-size: 12px; }
+
+      main {
+        width: min(760px, 100%);
+        margin: auto;
+        padding: 72px 28px 88px;
+        animation: appear 500ms ease-out both;
+      }
+
+      .eyebrow {
+        margin: 0 0 32px;
+        color: var(--accent);
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      blockquote { margin: 0; }
+
+      .quote-mark {
+        display: block;
+        height: 52px;
+        color: var(--accent);
+        font-size: 76px;
+        line-height: 1;
+      }
+
+      .quote-text {
+        margin: 14px 0 28px;
+        font-size: clamp(32px, 6vw, 58px);
+        line-height: 1.16;
+        overflow-wrap: anywhere;
+      }
+
+      figcaption {
+        color: var(--muted);
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+      }
+
+      figcaption::before { content: "— "; color: var(--accent); }
+
+      .actions { margin-top: 52px; }
+
+      .refresh {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        gap: 12px;
+        padding: 0 20px;
+        border: 0;
+        background: var(--ink);
+        color: white;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background 160ms ease, transform 160ms ease;
+      }
+
+      .refresh:hover { background: var(--accent); transform: translateY(-2px); }
+      .refresh:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+      .refresh span { font-size: 18px; }
+
+      @keyframes appear {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/">A Little Perspective</a>
+      <span class="edition">A thought for today</span>
+    </header>
+
+    <main>
+      <p class="eyebrow">A moment to pause</p>
+      <figure>
+        <blockquote>
+          <span class="quote-mark" aria-hidden="true">“</span>
+          <p class="quote-text">{{ quote.text }}</p>
+        </blockquote>
+        <figcaption>{{ quote.author }}</figcaption>
+      </figure>
+      <div class="actions">
+        <a class="refresh" href="/" aria-label="Get another random quote">
+          Another thought <span aria-hidden="true">↻</span>
+        </a>
+      </div>
+    </main>
+
+    <footer>
+      <span>Words to carry with you.</span>
+      <span>01 / EVERY DAY</span>
+    </footer>
+  </body>
+</html>
